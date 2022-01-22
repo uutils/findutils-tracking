@@ -25,7 +25,11 @@ ax = plt.gca()
 df.plot(y="total", color="blue", ax=ax)
 df.plot(y="fail", color="red", ax=ax)
 df.plot(y="pass", color="green", ax=ax)
-df.plot(y="error", color="orange", ax=ax)
-plt.title("Rust/Coreutils running GNU's testsuite")
+if "gnu" in sys.argv[1]:
+    df.plot(y="error", color="orange", ax=ax)
+plt.title("Rust/findutils running GNU's testsuite")
 plt.xticks(rotation=45)
-plt.savefig("gnu-results.png", dpi=199)
+if "gnu" in sys.argv[1]:
+    plt.savefig("gnu-results.png", dpi=199)
+else:
+    plt.savefig("bfs-results.png", dpi=199)
