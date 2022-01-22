@@ -15,8 +15,7 @@ df.columns.names = ["date"]
 as_list = df.index.tolist()
 for i in as_list:
     idx = as_list.index(i)
-    t = parsedate(i)
-    as_list[idx] = datetime.fromtimestamp(time.mktime(t))
+    as_list[idx] = str(i).split(" ")[0]
 
 df.index = as_list
 
