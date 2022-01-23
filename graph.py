@@ -22,7 +22,7 @@ df.index = as_list
 print(df)
 
 ax = plt.gca()
-ax.invert_xaxis()
+
 df.plot(y="total", color="blue", ax=ax)
 df.plot(y="fail", color="gray", ax=ax, dashes=(2, 1))
 df.plot(y="pass", color="green", ax=ax, dashes=(4, 1))
