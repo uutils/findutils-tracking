@@ -29,9 +29,10 @@ df.plot(y="fail", color="gray", ax=ax, dashes=(2, 1))
 df.plot(y="pass", color="green", ax=ax, dashes=(4, 1))
 if "gnu" in sys.argv[1]:
     df.plot(y="error", color="orange", ax=ax, dashes=(6, 2))
-plt.title("Rust/findutils running other testsuites")
 plt.xticks(rotation=45)
 if "gnu" in sys.argv[1]:
+    plt.title("Rust/findutils running GNU testsuite")
     plt.savefig("gnu-results.png", dpi=199)
 else:
+    plt.title("Rust/findutils running BFS testsuite")
     plt.savefig("bfs-results.png", dpi=199)
