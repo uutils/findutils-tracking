@@ -59,7 +59,7 @@ jobs:
       with:
         default_author: github_actions
         message: "Refresh the graph"
-        add: gnu-results.png
+        add: gnu-results.svg
 
   bfs:
     name: Process the BFS test results
@@ -112,4 +112,4 @@ jobs:
       with:
         default_author: github_actions
         message: "Refresh the graph"
-        add: bfs-results.png
+        add: bfs-results.svg
