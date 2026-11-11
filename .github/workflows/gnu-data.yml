@@ -21,12 +21,6 @@ jobs:
       # repo's artifacts; override with a PAT secret if that ever changes.
       GH_TOKEN: ${{ secrets.FINDUTILS_TOKEN || secrets.GITHUB_TOKEN }}
     steps:
-    - name: Install deps
-      shell: bash
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y python3-pandas python3-matplotlib
-
     - name: Checkout repo
       uses: actions/checkout@v4
 
@@ -43,11 +37,19 @@ jobs:
       shell: bash
       run: python3 import_results.py bfs
 
-    - name: Generate the graphs
-      shell: bash
-      run: |
-        python3 graph.py gnu-result.json
-        python3 graph.py bfs-result.json
+    - name: Generate the GNU graph
+      uses: uutils/uutils-tracking/render-graph@main
+      with:
+        json: gnu-result.json
+        title: GNU
+        project: findutils
+
+    - name: Generate the BFS graph
+      uses: uutils/uutils-tracking/render-graph@main
+      with:
+        json: bfs-result.json
+        title: BFS
+        project: findutils
 
     - name: Add & Commit
       uses: EndBug/add-and-commit@v9.1.4
